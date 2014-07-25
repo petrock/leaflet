@@ -1,5 +1,7 @@
 var mapCenter = [35.994033, -78.898619];
 var map = L.map('map').setView(mapCenter, 14);
+var merge = L.marker([35.997057, -78.899455]).bindPopup('Merge Records')
+var places = L.layerGroup([merge]);
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/petrock.j1ce2b33/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -12,37 +14,8 @@ var circle = L.circle(mapCenter, 500, {
     fillOpacity: 0.5
 }).addTo(map);
 
+var overlayMaps = {
+    "Places": places
+};
 
-var MyCustomLayer = L.Class.extend({
-
-    initialize: function (latlng) {
-        // save position of the layer or any options from the constructor
-        this._latlng = latlng;
-    },
-
-    onAdd: function (map) {
-        this._map = map;
-
-        // create a DOM element and put it into one of the map panes
-        this._el = L.DomUtil.create('div', 'my-custom-layer leaflet-zoom-hide');
-        map.getPanes().overlayPane.appendChild(this._el);
-
-        // add a viewreset event listener for updating layer's position, do the latter
-        map.on('viewreset', this._reset, this);
-        this._reset();
-    },
-
-    onRemove: function (map) {
-        // remove layer's DOM elements and listeners
-        map.getPanes().overlayPane.removeChild(this._el);
-        map.off('viewreset', this._reset, this);
-    },
-
-    _reset: function () {
-        // update layer's position
-        var pos = this._map.latLngToLayerPoint(this._latlng);
-        L.DomUtil.setPosition(this._el, pos);
-    }
-});
-
-map.addLayer(new MyCustomLayer(mapCenter));
+L.control.layers(overlayMaps).addTo(map);
