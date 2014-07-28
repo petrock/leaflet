@@ -1,12 +1,16 @@
 var mapCenter = [35.994033, -78.898619];
-var map = L.map('map').setView(mapCenter, 11);
+var map = L.map('map').setView(mapCenter, 13);
 var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 
-var merge = L.marker([35.997057, -78.899455]).bindPopup('Merge Records')
+var merge = L.marker([35.997057, -78.899455],
+        {draggable: true,
+        title: 'Merge Records',
+        opacity: 0.75}
+        ).bindPopup('Merge Records');
 var places = L.layerGroup([merge]);
 
 var imageUrl = 'images/security_savings.jpg',
-    imageBounds = [[36.020781,-78.935652],[35.990924,-78.887136]];
+    imageBounds = [[35.950781,-78.975652],[35.990924,-78.927136]];
 
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; ' + mapLink,
