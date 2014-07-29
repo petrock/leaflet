@@ -32,3 +32,14 @@ L.control.layers(overlayMaps).addTo(map);
 L.imageOverlay(imageUrl, imageBounds, {
     opacity: 0.7
 }).addTo(map);
+
+var polyline = L.polyline([
+      [35.986132, -78.916297],
+      [36.000368, -78.904967],
+      [35.997869, -78.879476]
+      ],
+      {
+          color: '#FFB45D',
+        weight: 8,
+        opacity: 0.7
+      }).addTo(map);
