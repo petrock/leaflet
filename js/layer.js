@@ -14,6 +14,7 @@ var merge = L.marker([35.997057, -78.899455],
         title: 'Merge Records',
         opacity: 0.75}
         ).bindPopup('Merge Records');
+
 var places = L.layerGroup([merge]);
 
 var imageUrl = 'images/security_savings.jpg',
@@ -42,14 +43,13 @@ var baseMaps = {
     "Landscape": landMap
 };
 
-L.control.layers(baseMaps).addTo(map);
 
 // add marker layer
 var overlayMaps = {
     "Places": places
 };
 
-L.control.layers(overlayMaps).addTo(map);
+L.control.layers(baseMaps,overlayMaps).addTo(map);
 
 // image overlay
 L.imageOverlay(imageUrl, imageBounds, {
