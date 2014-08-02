@@ -1,4 +1,4 @@
-var map = L.map('map').setView([35.994033, -78.898619], 14);
+var map = L.map('map').setView([-41.5546, 174.146], 10);
 
 mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 
@@ -8,10 +8,8 @@ L.tileLayer(
     maxZoom: 18,
     }).addTo(map);
     
-var osmGeocoder = new L.Control.OSMGeocoder({
-    collapsed: false,
-    position: 'bottomright',
-    text: 'Find'
-});
-
-map.addControl(osmGeocoder);
+var heat = L.heatLayer(quakePoints, {
+    radius: 20,
+    blur: 15,
+    maxZoom: 17,
+}).addTo(map);
