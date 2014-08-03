@@ -29,13 +29,13 @@ d3.json("rectangle.json", function(geoShape) {
         var topLeft = bounds[0],
             bottomRight = bounds[1];
 
-        svg .attr("width", bottomRight[0] - topLeft[0])
+        svg.attr("width", bottomRight[0] - topLeft[0])
             .attr("height", bottomRight[1] - topLeft[1])
-            ,style("left", topLeft[0] + "px")
+            .style("left", topLeft[0] + "px")
             .style("top", topLeft[1] + "px");
 
 
-        g .attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+        g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
 
         d3_features.attr("d", path)
             .style("fill-opacity", 0.7)
