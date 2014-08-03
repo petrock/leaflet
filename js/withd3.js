@@ -11,7 +11,7 @@ L.tileLayer(
 var svg = d3.select(map.getPanes().overlayPane).append("svg"),
     g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
-d3.json("js/rectangle.json", function(geoShape) {
+d3.json("rectangle.json", function(geoShape) {
     var transform = d3.geo.transform({point: projectPoint}),
         path = d3.geo.path().projection(transform);
 
