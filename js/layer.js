@@ -41,7 +41,9 @@ var circle = L.circle(mapCenter, 500, {
     color: 'red',
     fillColor: '#f03',
     fillOpacity: 0.5
-}).addTo(map);
+});
+
+var shapes = L.layerGroup([circle]);
 
 // add base layers
 var baseMaps = {
@@ -52,18 +54,12 @@ var baseMaps = {
     "Public Transportation": transportMap
 };
 
-
-// add marker layer
-var overlayMaps = {
-    "Places": places
-};
-
-L.control.layers(baseMaps,overlayMaps).addTo(map);
-
 // image overlay
-L.imageOverlay(imageUrl, imageBounds, {
+var image = L.imageOverlay(imageUrl, imageBounds, {
     opacity: 0.7
-}).addTo(map);
+});
+
+var images = L.layerGroup([image]);
 
 // polyline
 var polyline = L.polyline([
@@ -76,4 +72,17 @@ var polyline = L.polyline([
         weight: 8,
         opacity: 0.9,
         dashArray: '25, 20'
-      }).addTo(map);
+      });
+
+var lines = L.layerGroup([polyline]);
+
+// add marker, circle and image layers
+var overlayMaps = {
+    "Places": places,
+    "Shapes": shapes,
+    "Images": images,
+    "Lines": lines
+};
+
+L.control.layers(baseMaps,overlayMaps).addTo(map);
+
