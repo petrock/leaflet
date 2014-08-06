@@ -7,6 +7,7 @@ var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     osmAttrib = '&copy; ' + osmLink + ' Contributors',
     bwUrl = 'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png',
     landUrl = 'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
+    cycleUrl = 'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
     thunAttrib = '&copy; '+osmLink+' Contributors & '+thunLink;
 
 // marker
@@ -24,7 +25,8 @@ var imageUrl = 'images/security_savings.jpg',
 // add map tiles layers
 var osmMap = L.tileLayer(osmUrl, {attribution: osmAttrib}),
     bwMap = L.tileLayer(bwUrl, {attribution: osmAttrib}),
-    landMap = L.tileLayer(landUrl, {attribution: thunAttrib});
+    landMap = L.tileLayer(landUrl, {attribution: thunAttrib}),
+    cycleMap = L.tileLayer(cycleUrl, {attribution: thunAttrib});
 
 var map = L.map('map', {
     layers: [osmMap]
@@ -43,7 +45,8 @@ var circle = L.circle(mapCenter, 500, {
 var baseMaps = {
     "OSM Map": osmMap,
     "B&W Map": bwMap,
-    "Landscape": landMap
+    "Landscape": landMap,
+    "Cycle paths": cycleMap
 };
 
 
