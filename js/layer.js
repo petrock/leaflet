@@ -8,6 +8,7 @@ var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     bwUrl = 'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png',
     landUrl = 'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
     cycleUrl = 'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
+    transportUrl = 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
     thunAttrib = '&copy; '+osmLink+' Contributors & '+thunLink;
 
 // marker
@@ -27,6 +28,7 @@ var osmMap = L.tileLayer(osmUrl, {attribution: osmAttrib}),
     bwMap = L.tileLayer(bwUrl, {attribution: osmAttrib}),
     landMap = L.tileLayer(landUrl, {attribution: thunAttrib}),
     cycleMap = L.tileLayer(cycleUrl, {attribution: thunAttrib});
+    transportMap = L.tileLayer(transportUrl, {attribution: thunAttrib});
 
 var map = L.map('map', {
     layers: [osmMap]
@@ -46,7 +48,8 @@ var baseMaps = {
     "OSM Map": osmMap,
     "B&W Map": bwMap,
     "Landscape": landMap,
-    "Cycle paths": cycleMap
+    "Cycle paths": cycleMap,
+    "Public Transportation": transportMap
 };
 
 
