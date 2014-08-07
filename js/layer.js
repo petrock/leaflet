@@ -12,9 +12,9 @@ var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     landUrl = 'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png',
     cycleUrl = 'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
     transportUrl = 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
-    aerialUrl = 'http://otile1{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png',
+    aerialUrl = 'http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png',
     thunAttrib = '&copy; '+osmLink+' Contributors & '+thunLink,
-    mapquestAttrib = 'Portions Courtesy NASA/JPL-Caltech and U.S. Dept. of Agriculture, Farm Service Agency. Tiles courtesy of '+mapquestLink+mapquestPic;
+    mapquestAttrib = 'Portions Courtesy NASA/JPL-Caltech and U.S. Dept. of Agriculture, Farm Service Agency. Tiles courtesy of ' + mapquestLink + ' ' + mapquestPic;
 
 // marker
 var merge = L.marker([35.997057, -78.899455],
@@ -34,7 +34,7 @@ var osmMap = L.tileLayer(osmUrl, {attribution: osmAttrib}),
     landMap = L.tileLayer(landUrl, {attribution: thunAttrib}),
     cycleMap = L.tileLayer(cycleUrl, {attribution: thunAttrib}),
     transportMap = L.tileLayer(transportUrl, {attribution: thunAttrib}),
-    aerialMap = L.tileLayer(aerialUrl, {attribution: mapquestAttrib});
+    aerialMap = L.tileLayer(aerialUrl, {attribution: mapquestAttrib, maxZoom: 18, subdomains: '1234'});
 
 var map = L.map('map', {
     layers: [osmMap]
