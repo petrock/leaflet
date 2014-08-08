@@ -4,7 +4,8 @@ var osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>',
     thunLink = '<a href="http://thunderforest.com/">Thunderforest</a>',
     mapquestLink = '<a href="http://www.mapquest.com//">MapQuest</a>',
     mapquestPic = '<img src="http://developer.mapquest.com/content/osm/mq_logo.png\ ">',
-    stamenLink = '<a href="http://stamen.com">Stamen Design</a>';
+    stamenLink = '<a href="http://stamen.com">Stamen Design</a>',
+    esriLink = '<a href="http://www.esri.com/">Esri</a>';
 
 var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
     osmAttrib = '&copy; ' + osmLink + ' Contributors',
@@ -14,9 +15,11 @@ var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     transportUrl = 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
     aerialUrl = 'http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png',
     watercolorUrl = 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
+    photoUrl = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     thunAttrib = '&copy; '+osmLink+' Contributors & '+thunLink,
     watercolorAttrib = '&copy; '+osmLink+' Contributors & '+stamenLink,
-    mapquestAttrib = 'Portions Courtesy NASA/JPL-Caltech and U.S. Dept. of Agriculture, Farm Service Agency. Tiles courtesy of ' + mapquestLink + ' ' + mapquestPic;
+    mapquestAttrib = 'Portions Courtesy NASA/JPL-Caltech and U.S. Dept. of Agriculture, Farm Service Agency. Tiles courtesy of ' + mapquestLink + ' ' + mapquestPic,
+    photoAttrib = '&copy; '+esriLink+', i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
 
 // marker
 var merge = L.marker([35.997057, -78.899455],
@@ -37,7 +40,8 @@ var osmMap = L.tileLayer(osmUrl, {attribution: osmAttrib}),
     cycleMap = L.tileLayer(cycleUrl, {attribution: thunAttrib}),
     transportMap = L.tileLayer(transportUrl, {attribution: thunAttrib}),
     aerialMap = L.tileLayer(aerialUrl, {attribution: mapquestAttrib, maxZoom: 18, subdomains: '1234'}),
-    watercolorMap = L.tileLayer(watercolorUrl, {attribution: watercolorAttrib});
+    watercolorMap = L.tileLayer(watercolorUrl, {attribution: watercolorAttrib}),
+    photoMap = L.tileLayer(photoUrl, {attribution: photoAttrib});
 
 var map = L.map('map', {
     layers: [osmMap]
@@ -62,7 +66,8 @@ var baseMaps = {
     "Cycle paths": cycleMap,
     "Public Transportation": transportMap,
     "Aerial Map": aerialMap,
-    "Stamen Watercolor": watercolorMap
+    "Stamen Watercolor": watercolorMap,
+    "Photo Map": photoMap
 };
 
 // image overlay
