@@ -1,7 +1,7 @@
 var map = L.map('map').setView([37.8, -96], 4);
 
 L.tileLayer('http://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-    id: 'petrock.j1ce2b33',
+    id: 'petrock.j6ln07e7',
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 }).addTo(map);
 
